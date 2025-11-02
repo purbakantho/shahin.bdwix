@@ -78,7 +78,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16
 <script data-cfasync="false" src="wp-includes/js/jquery/jquery-migrate.min_ver-3.4.1.js" id="jquery-migrate-js"></script>
 <link rel="https://api.w.org/" href="https://muraiem.com/wp-json/" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://muraiem.com/xmlrpc.php?rsd" />
 <meta name="generator" content="WordPress 6.8.3" />
-<link rel='shortlink' href='index.html' />
+<link rel='shortlink' href='/' />
 <meta name="generator" content="Elementor 3.27.5; features: e_font_icon_svg, additional_custom_breakpoints, e_element_cache; settings: css_print_method-external, google_font-enabled, font_display-swap">
 			<style>
 				.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload),
@@ -166,6 +166,204 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16
 					opacity: 1;
 				}
 	         </style></head>
+
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: #0b0016;
+    color: white;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: linear-gradient(90deg, #0b0016, 
+#2a0758, #0b0016);
+    position: relative;
+    z-index: 1001;
+  }
+
+  /* Logo */
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+
+  .logo h1 {
+    color: #00ff88;
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  /* Navbar Links */
+  nav {
+    display: flex;
+    align-items: center;
+    background: radial-gradient(circle at top left, #250050, 
+#000010);
+    border-radius: 50px;
+    padding: 8px 25px;
+    gap: 20px;
+  }
+
+  nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+
+  nav a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 3px;
+    left: 0;
+    bottom: -6px;
+    background: linear-gradient(90deg, #00e5ff, #ff00ff);
+    transition: width 0.3s ease;
+    border-radius: 2px;
+  }
+
+  nav a:hover {
+    color: #00e5ff;
+  }
+
+  nav a:hover::after {
+    width: 100%;
+  }
+
+  /* Contact Button */
+  .contact-btn {
+    background: linear-gradient(90deg, #00c6ff, #ad6bff);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .contact-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px #00c6ff;
+  }
+
+  /* Mobile Menu Button */
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+    z-index: 1002;
+  }
+
+  .menu-toggle div {
+    width: 25px;
+    height: 3px;
+    background: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  /* Drawer Menu */
+  .drawer {
+    position: fixed;
+    top: 0;
+    right: -260px;
+    width: 250px;
+    height: 100%;
+    background: linear-gradient(180deg, #220044, 
+#0b0016);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 80px;
+    transition: right 0.4s ease;
+    z-index: 1000;
+  }
+
+  .drawer a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    margin: 15px 0;
+    transition: color 0.3s;
+  }
+
+  .drawer a:hover {
+    color: #00e5ff;
+  }
+
+  .drawer.active {
+    right: 0;
+  }
+
+  /* Animate menu button when active */
+  .menu-toggle.open div:nth-child(1) {
+    transform: rotate(45deg) translateY(8px);
+  }
+  .menu-toggle.open div:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-toggle.open div:nth-child(3) {
+    transform: rotate(-45deg) translateY(-8px);
+  }
+
+  /* Overlay background when drawer open */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 999;
+  }
+
+  .overlay.active {
+    display: block;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    nav, .contact-btn {
+      display: none;
+    }
+
+    .menu-toggle {
+      display: flex;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="https://via.placeholder.com/40" alt="Logo">
+
+  </div>
+
+  <nav>
 <!DOCTYPE html>
 <html lang="bn">
 
@@ -368,13 +566,12 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16
   </div>
 
   <nav>
-     <a href="https://shahin.purbakantho.com/">Home</a>
-  <a href="https://shahin.purbakantho.com/about-me.html">About Me</a>
-  <a href="https://shahin.purbakantho.com/service.html">Service</a>
-  <a href="https://shahin.purbakantho.com/blog.html">Blog</a>
-  <a href="https://it.purbakantho.com/">It</a>
-  <a href="https://helpline.purbakantho.com/">Helpline</a>
-  <a href="https://api.whatsapp.com/send/?phone=%2B8801711796839" class="contact-btn">Contact Me</a>
+    <a href="#">Home</a>
+    <a href="#">About Me</a>
+    <a href="#">Service</a>
+    <a href="#">Blog</a>
+    <a href="#">It</a>
+    <a href="#">Helpline</a>
   </nav>
 
   <a href="#" class="contact-btn">Contact Me</a>
@@ -387,15 +584,14 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16
 </header>
 
 <div class="drawer" id="drawerMenu">
-  <a href="https://shahin.purbakantho.com/">Home</a>
-  <a href="https://shahin.purbakantho.com/about-me.html">About Me</a>
-  <a href="https://shahin.purbakantho.com/service.html">Service</a>
-  <a href="https://shahin.purbakantho.com/blog.html">Blog</a>
-  <a href="https://it.purbakantho.com/">It</a>
-  <a href="https://helpline.purbakantho.com/">Helpline</a>
-  <a href="https://api.whatsapp.com/send/?phone=%2B8801711796839" class="contact-btn">Contact Me</a>
+  <a href="#">Home</a>
+  <a href="#">About Me</a>
+  <a href="#">Service</a>
+  <a href="#">Blog</a>
+  <a href="#">It</a>
+  <a href="#">Helpline</a>
+  <a href="#" class="contact-btn">Contact Me</a>
 </div>
-
 
 <div class="overlay" id="overlay"></div>
 
@@ -433,6 +629,57 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16
   });
 </script>
 
+
+
+  <div class="menu-toggle" id="menuToggle">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</header>
+
+<div class="drawer" id="drawerMenu">
+  <a href="https://shahin.purbakantho.com/">Home</a>
+  <a href="https://shahin.purbakantho.com/about-me.html">About Me</a>
+  <a href="https://shahin.purbakantho.com/service.html">Service</a>
+  <a href="https://shahin.purbakantho.com/blog.html">Blog</a>
+  <a href="https://it.purbakantho.com/">It</a>
+  <a href="https://helpline.purbakantho.com/">Helpline</a>
+  <a href="https://api.whatsapp.com/send/?phone=%2B8801711796839" class="contact-btn">Contact Me</a>
+</div>
+
+<div class="overlay" id="overlay"></div>
+
+<script>
+  const menuToggle = document.getElementById
+('menuToggle');
+  const drawerMenu = document.getElementById
+('drawerMenu');
+  const overlay = document.getElementById('overlay');
+
+  // toggle open/close
+  menuToggle.addEventListener('click', () => {
+    drawerMenu.classList.toggle('active');
+    menuToggle.classList.toggle('open');
+    overlay.classList.toggle('active');
+  });
+
+  // close when clicking outside or on link
+  overlay.addEventListener('click', () => {
+    drawerMenu.classList.remove('active');
+    menuToggle.classList.remove('open');
+    overlay.classList.remove('active');
+  });
+
+  document.querySelectorAll('.drawer a').forEach(link => 
+{
+    link.addEventListener('click', () => {
+      drawerMenu.classList.remove('active');
+      menuToggle.classList.remove('open');
+      overlay.classList.remove('active');
+    });
+  });
+</script>
 
 				<div data-elementor-type="wp-page" data-elementor-id="18" class="elementor elementor-18" data-elementor-post-type="page">
 				<div class="elementor-element elementor-element-b89b9a3 home e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent" data-id="b89b9a3" data-element_type="container" id="home" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
