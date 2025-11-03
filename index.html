@@ -241,46 +241,97 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16
 				</div>
 
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-div.scrollmenu {
-  background-color: #182736
-  overflow: auto;
-  white-space: nowrap;
-}
+  /* Navigation bar */
+  .navbar {
+    background-color: #0d6efd;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+  }
 
-div.scrollmenu a {
-  display: inline-block;
-  color: white;
-  text-align: center;
-  padding: 14px;
-  text-decoration: none;
-}
+  /* Menu links */
+  .navbar a, .dropdown .dropbtn {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-size: 17px;
+    border: none;
+    outline: none;
+    background: none;
+  }
 
-div.scrollmenu a:hover {
-  background-color: #076b2e
-}
+  .navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: #084298;
+  }
+
+  /* Dropdown container */
+  .dropdown {
+    float: left;
+    overflow: hidden;
+  }
+
+  /* Dropdown content (hidden by default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 180px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+
+  /* Dropdown links */
+  .dropdown-content a {
+    float: none;
+    color: #000;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
+
+  /* Show the dropdown on hover */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  /* Responsive layout */
+  @media screen and (max-width: 600px) {
+    .navbar a, .dropdown .dropbtn {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+    .dropdown-content {
+      position: relative;
+    }
+  }
 </style>
 
+<div class="navbar">
+  <a href="#home">হোম</a>
+  <a href="#news">খবর</a>
 
-</div>
- <div class="scrollmenu">
- <a title=" " href="/"><i class="fa fa-home" style="font-size:16px"></i>  </a> 
- <a href="https://shahin.purbakantho.com/about-me.html">আমার সম্পর্কে </a>
- <a href="https://shahin.purbakantho.com/service.html">সেবা সমূহ</a>
-  <a href="https://shahin.purbakantho.com/blog.html">ব্লগ</a>
-  <a href="https://it.purbakantho.com/">আইটি</a>
-  <a href="https://helpline.purbakantho.com/">হেল্পলাইন</a>
- <a href="https://www.purbakantho.com/p/bangla-bijoy-to-unicode-converter-web.html">কনভার্টার</a>
- <a href="https://www.purbakantho.com/">নিউজ</a>
-  <a href="https://radio.purbakantho.com/">রেডিও</a>
-  <a href="https://tv.purbakantho.com/">টিভি</a>
- <a href="https://www.youtube.com/@purbakantho921">ইউটিউব</a> 
- <a href="https://wa.me/8801711796839">হোয়াটসঅ্যাপ</a>
- <a href="https://shahin.info.bd/contact/">যোগাযোগ</a>
-  ...
-</div>
+  <div class="dropdown">
+    <button class="dropbtn">বিভাগসমূহ ▾</button>
+    <div class="dropdown-content">
+      <a href="#politics">রাজনীতি</a>
+      <a href="#sports">খেলা</a>
+      <a href="#entertainment">বিনোদন</a>
+      <a href="#education">শিক্ষা</a>
+    </div>
+  </div>
 
+  <a href="#about">আমাদের সম্পর্কে</a>
+  <a href="#contact">যোগাযোগ</a>
+</div>
 <style>
 .container { 
 position: relative; 
