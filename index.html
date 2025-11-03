@@ -342,39 +342,92 @@ margin: 0;
      
        </div>	
 
-<center class='mb-sm-1 small'>					
-<a class="turncate  text-[16px] text-[#000000de] font-medium">  
- <center class="mb-sm-1 small" style="font-size: small;"> <p style='color:   OrangeRed'>
-<i aria-hidden='true' class='fa fa-calendar'></i>   
-   আজ  <script type="text/javascript">
-var d=new Date();
-var weekday=new Array(7);
-weekday[0]="রব&#2495;ব&#2494;র ";
-weekday[1]="স&#2507;মব&#2494;র ";
-weekday[2]="মঙ&#2509;গলব&#2494;র ";
-weekday[3]="ব&#2497;ধব&#2494;র ";
-weekday[4]="ব&#2499;হস&#2509;পত&#2495;ব&#2494;র ";
-weekday[5]="শ&#2497;ক&#2509;রব&#2494;র ";
-weekday[6]="শন&#2495;ব&#2494;র ";
-document.write(" " + weekday[d.getDay()]);
-</script><script type='text/javascript'>
-  
-                  var currentDate = new Date();
-                  document.write(currentDate.toLocaleString("bn-BD", {
-                    day: "2-digit"
-                  }) + " " + currentDate.toLocaleString("bn-BD", {
-                    month: "long"
-                  }) + " " + currentDate.toLocaleString("bn-BD", {
-                    year: "numeric"
-                  })); 
-             </script> খ্রিস্টাব্দ,
-<script src="https://purbakantho.github.io/Radio/bangladatetoday.min.js"></script>
-<script>dateToday('date-today','bangla');</script>
-<span id='date-today'></span> 
+<div class="date-box">
+  <h2>বর্তমান তারিখ ও সময়</h2>
+  <p id="englishDate"></p>
+  <p id="banglaDate"></p>
+  <p id="time"></p>
+</div>
+
+<style>
+  .date-box {
+    background: #ffffff;
+    display: inline-block;
+    padding: 25px 45px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    text-align: center;
+    font-family: Kalpurush, Noto Sans Bengali, Arial, sans-serif;
+  }
+  h2 {
+    color: #007bff;
+    margin-bottom: 10px;
+  }
+  p {
+    font-size: 20px;
+    margin: 6px 0;
+  }
+</style>
+
+<script>
+  function toBanglaNumber(num) {
+    const engToBan = {'0':'০','1':'১','2':'২','3':'৩','4':'৪','5':'৫','6':'৬','7':'৭','8':'৮','9':'৯'};
+    return num.toString().split('').map(n => engToBan[n] || n).join('');
+  }
+
+  const banglaMonths = ["বৈশাখ","জ্যৈষ্ঠ","আষাঢ়","শ্রাবণ","ভাদ্র","আশ্বিন","কার্তিক","অগ্রহায়ণ","পৌষ","মাঘ","ফাল্গুন","চৈত্র"];
+  const banglaWeekdays = ["রবিবার","সোমবার","মঙ্গলবার","বুধবার","বৃহস্পতিবার","শুক্রবার","শনিবার"];
+
+  function getBanglaDate(gDate) {
+    const year = gDate.getFullYear();
+    const month = gDate.getMonth() + 1;
+    const day = gDate.getDate();
+
+    let banglaYear = year - 593;
+    let banglaMonth, banglaDay;
+
+    const banglaMonthDays = [31,31,31,31,31,30,30,30,30,30,29,30];
+    let startDates = [14,14,15,15,15,15,16,16,16,16,15,15];
+
+    if (day < startDates[month - 1]) {
+      banglaMonth = (month + 10) % 12;
+      banglaYear--;
+      banglaDay = day + (banglaMonthDays[banglaMonth] - startDates[banglaMonth]);
+    } else {
+      banglaMonth = (month + 11) % 12;
+      banglaDay = day - startDates[month - 1] + 1;
+    }
+
+    return {
+      day: toBanglaNumber(banglaDay),
+      month: banglaMonths[banglaMonth],
+      year: toBanglaNumber(banglaYear)
+    };
+  }
+
+  function updateDateTime() {
+    const now = new Date();
+
+    const englishDate = now.toLocaleDateString('en-GB', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+    document.getElementById('englishDate').innerText = "English: " + englishDate;
+
+    const weekday = banglaWeekdays[now.getDay()];
+    const bDate = getBanglaDate(now);
+    document.getElementById('banglaDate').innerText = "বাংলা: " + weekday + ", " + bDate.day + " " + bDate.month + " " + bDate.year + " বঙ্গাব্দ";
+
+    const timeStr = now.toLocaleTimeString('en-US', { hour12: true });
+    const banglaTime = toBanglaNumber(now.getHours()) + ":" + toBanglaNumber(now.getMinutes()) + ":" + toBanglaNumber(now.getSeconds());
+    document.getElementById('time').innerText = "সময়: " + banglaTime + " (" + timeStr + ")";
+  }
+
+  setInterval(updateDateTime, 1000);
+  updateDateTime();
 </script>
-
-
-
 
 		
 				<div data-elementor-type="wp-page" data-elementor-id="18" class="elementor elementor-18" data-elementor-post-type="page">
