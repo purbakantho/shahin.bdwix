@@ -341,7 +341,99 @@ margin: 0;
     
      
        </div>	
-	
+
+
+<div class="date-box">
+  <h2>বর্তমান তারিখ ও সময়</h2>
+  <p id="englishDate"></p>
+  <p id="banglaDate"></p>
+  <p id="time"></p>
+</div>
+
+<style>
+  .date-box {
+    font-family: Arial, Kalpurush, Noto Sans Bengali, sans-serif;
+    background: #ffffff;
+    display: inline-block;
+    padding: 25px 45px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    text-align: center;
+  }
+  h2 {
+    color: #007bff;
+    margin-bottom: 10px;
+  }
+  p {
+    font-size: 20px;
+    margin: 6px 0;
+  }
+</style>
+
+<script>
+  function toBanglaNumber(num) {
+    const engToBan = {'0':'০','1':'১','2':'২','3':'৩','4':'৪','5':'৫','6':'৬','7':'৭','8':'৮','9':'৯'};
+    return num.toString().split('').map(n => engToBan[n] || n).join('');
+  }
+
+  const banglaMonths = ["বৈশাখ","জ্যৈষ্ঠ","আষাঢ়","শ্রাবণ","ভাদ্র","আশ্বিন","কার্তিক","অগ্রহায়ণ","পৌষ","মাঘ","ফাল্গুন","চৈত্র"];
+  const banglaWeekdays = ["রবিবার","সোমবার","মঙ্গলবার","বুধবার","বৃহস্পতিবার","শুক্রবার","শনিবার"];
+
+  function getBanglaDate(gDate) {
+    const year = gDate.getFullYear();
+    const month = gDate.getMonth() + 1;
+    const day = gDate.getDate();
+
+    let banglaYear = year - 593;
+    let banglaMonth, banglaDay;
+
+    const banglaMonthDays = [31,31,31,31,31,30,30,30,30,30,29,30];
+    let startDates = [14,14,15,15,15,15,16,16,16,16,15,15];
+
+    if (day < startDates[month - 1]) {
+      banglaMonth = (month + 10) % 12;
+      banglaYear--;
+      banglaDay = day + (banglaMonthDays[banglaMonth] - startDates[banglaMonth]);
+    } else {
+      banglaMonth = (month + 11) % 12;
+      banglaDay = day - startDates[month - 1] + 1;
+    }
+
+    return {
+      day: toBanglaNumber(banglaDay),
+      month: banglaMonths[banglaMonth],
+      year: toBanglaNumber(banglaYear)
+    };
+  }
+
+  function updateDateTime() {
+    const now = new Date();
+
+    const englishDate = now.toLocaleDateString('en-GB', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+    document.getElementById('englishDate').innerText = "English: " + englishDate;
+
+    const weekday = banglaWeekdays[now.getDay()];
+    const bDate = getBanglaDate(now);
+    document.getElementById('banglaDate').innerText = "বাংলা: " + weekday + ", " + bDate.day + " " + bDate.month + " " + bDate.year + " বঙ্গাব্দ";
+
+    const timeStr = now.toLocaleTimeString('en-US', { hour12: true });
+    const banglaTime = toBanglaNumber(now.getHours()) + ":" + toBanglaNumber(now.getMinutes()) + ":" + toBanglaNumber(now.getSeconds());
+    document.getElementById('time').innerText = "সময়: " + banglaTime + " (" + timeStr + ")";
+  }
+
+  setInterval(updateDateTime, 1000);
+  updateDateTime();
+</script>
+
+
+
+
+		
 				<div data-elementor-type="wp-page" data-elementor-id="18" class="elementor elementor-18" data-elementor-post-type="page">
 				<div class="elementor-element elementor-element-b89b9a3 home e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent" data-id="b89b9a3" data-element_type="container" id="home" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 					<div class="e-con-inner">
