@@ -352,19 +352,58 @@ margin: 0;
 </div>
 
 <script>
+  // ইংরেজি সংখ্যাকে বাংলা সংখ্যায় রূপান্তর
+  function toBengaliDigits(num) {
+    return String(num).replace(/[0-9]/g, d => '০১২৩৪৫৬৭৮৯'[d]);
+  }
+
+  // বাংলা সপ্তাহের নাম
   const weekdays = ['রবিবার','সোমবার','মঙ্গলবার','বুধবার','বৃহস্পতিবার','শুক্রবার','শনিবার'];
-  const months = ['জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর'];
+  // বাংলা মাসের নাম
+  const banglaMonths = ['বৈশাখ','জ্যৈষ্ঠ','আষাঢ়','শ্রাবণ','ভাদ্র','আশ্বিন','কার্তিক','অগ্রহায়ণ','পৌষ','মাঘ','ফাল্গুন','চৈত্র'];
+  // ইংরেজি মাসের নাম (বাংলা উচ্চারণ)
+  const engMonths = ['জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর'];
+
   const now = new Date();
   const weekday = weekdays[now.getDay()];
-  const day = String(now.getDate()).padStart(2,'0');
-  const month = months[now.getMonth()];
+  const day = now.getDate();
+  const month = now.getMonth() + 1; // ১–১২
   const year = now.getFullYear();
 
-  const bengaliDigits = num => num.replace(/[0-9]/g, d => '০১২৩৪৫৬৭৮৯'[d]);
+  // বাংলা তারিখ গণনা (সরল সূত্র — সূর্যোদয়ের তারিখ অনুযায়ী সামঞ্জস্য করা যেতে পারে)
+  function getBanglaDate(gDay, gMonth, gYear) {
+    // প্রতিটি ইংরেজি মাসের সাথে আনুমানিক বাংলা মাসের শুরুর দিন
+    const banglaStart = [14, 13, 14, 14, 15, 15, 16, 17, 17, 18, 17, 16];
+    const banglaMonthIndex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
-  const today = `আজ ${weekday} ${bengaliDigits(day)} ${month} ${bengaliDigits(year)} খ্রিস্টাব্দ, ১৯ কার্ত্তিক ১৪৩২`;
-  document.getElementById('dateBox').textContent = today;
+    let bDay, bMonth, bYear;
+
+    if (gDay < banglaStart[gMonth - 1]) {
+      bMonth = banglaMonthIndex[gMonth - 2 < 0 ? 11 : gMonth - 2];
+      bDay = gDay + (30 - banglaStart[gMonth - 2 < 0 ? 11 : gMonth - 2]) + 1;
+    } else {
+      bMonth = banglaMonthIndex[gMonth - 1];
+      bDay = gDay - banglaStart[gMonth - 1] + 1;
+    }
+
+    bYear = gMonth < 4 || (gMonth === 4 && gDay < 14)
+      ? gYear - 594
+      : gYear - 593;
+
+    return {
+      day: toBengaliDigits(bDay),
+      month: banglaMonths[bMonth],
+      year: toBengaliDigits(bYear)
+    };
+  }
+
+  const bangla = getBanglaDate(day, month, year);
+  const englishDate = `${weekday} ${toBengaliDigits(day)} ${engMonths[month - 1]} ${toBengaliDigits(year)} খ্রিস্টাব্দ`;
+  const banglaDate = `${bangla.day} ${bangla.month} ${bangla.year} বঙ্গাব্দ`;
+
+  document.getElementById('dateBox').textContent = `আজ ${englishDate}, ${banglaDate}`;
 </script>
+
 
 		
 				<div data-elementor-type="wp-page" data-elementor-id="18" class="elementor elementor-18" data-elementor-post-type="page">
