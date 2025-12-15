@@ -342,56 +342,118 @@ margin: 0;
      
        </div>	
 
-<div style="
+<title>বাংলা ও ইংরেজি তারিখ</title>
+
+<style>
+body{
+  margin:0;
+}
+
+.wrapper{
   font-family:'Noto Sans Bengali','SolaimanLipi',sans-serif;
   background:#0c1438;
   display:flex;
   justify-content:center;
   align-items:center;
   padding:12px 0;
-">
-  <div style="
-    background:linear-gradient(135deg,#1a1a1a,#4b006e);
-    color:white;
-    border-radius:12px;
-    padding:10px 24px;
-    box-shadow:0 4px 15px rgba(0,0,0,0.25);
-    font-size:18px;
-    font-weight:600;
-    animation: glow 3s infinite alternate;
-  ">
-    <span id="dateLine" style="animation:colorShift 2s infinite alternate;">লোড হচ্ছে...</span>
-  </div>
-</div>
-
-<style>
-@keyframes colorShift {
-  0% { color:#e63946; }     /* লাল */
-  50% { color:#16a34a; }    /* সবুজ */
-  100% { color:#e63946; }   /* লাল আবার ফিরে আসবে */
 }
+
+.date-box{
+  background:linear-gradient(135deg,#1a1a1a,#4b006e);
+  color:white;
+  border-radius:12px;
+  padding:10px 24px;
+  box-shadow:0 4px 15px rgba(0,0,0,0.25);
+  font-size:18px;
+  font-weight:600;
+  animation: glow 3s infinite alternate;
+}
+
+#dateLine{
+  animation:colorShift 2s infinite alternate;
+}
+
+@keyframes colorShift {
+  0%   { color:#e63946; }   /* লাল */
+  50%  { color:#16a34a; }   /* সবুজ */
+  100% { color:#e63946; }
+}
+
 @keyframes glow {
-  0% { box-shadow:0 0 10px #16a34a; }
+  0%   { box-shadow:0 0 10px #16a34a; }
   100% { box-shadow:0 0 25px #e63946; }
 }
 </style>
+</head>
+
+<body>
+
+<div class="wrapper">
+  <div class="date-box">
+    <span id="dateLine">লোড হচ্ছে...</span>
+  </div>
+</div>
 
 <script>
-  // ইংরেজি সংখ্যা থেকে বাংলা সংখ্যা
-  function toBengaliDigits(num) {
-    return String(num).replace(/[0-9]/g, d => '০১২৩৪৫৬৭৮৯'[d]);
+/* ইংরেজি সংখ্যা → বাংলা সংখ্যা */
+function toBn(num){
+  return String(num).replace(/[0-9]/g, d => '০১২৩৪৫৬৭৮৯'[d]);
+}
+
+/* নামসমূহ */
+const weekdays = ['রবিবার','সোমবার','মঙ্গলবার','বুধবার','বৃহস্পতিবার','শুক্রবার','শনিবার'];
+
+const engMonths = ['জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন',
+                   'জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর'];
+
+const bnMonths = ['বৈশাখ','জ্যৈষ্ঠ','আষাঢ়','শ্রাবণ','ভাদ্র','আশ্বিন',
+                  'কার্তিক','অগ্রহায়ণ','পৌষ','মাঘ','ফাল্গুন','চৈত্র'];
+
+/* বাংলা তারিখ হিসাব (সরল ও প্রচলিত পদ্ধতি) */
+function getBanglaDate(date){
+  const gy = date.getFullYear();
+  const gm = date.getMonth() + 1;
+  const gd = date.getDate();
+
+  let by = gy - 593;
+  let bm, bd;
+
+  const start = new Date(gy,3,14); // ১৪ এপ্রিল
+
+  if(date >= start){
+    by = gy - 593;
+  }else{
+    by = gy - 594;
   }
 
-  const weekdays = ['রবিবার','সোমবার','মঙ্গলবার','বুধবার','বৃহস্পতিবার','শুক্রবার','শনিবার'];
-  const engMonths = ['জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর'];
-  const now = new Date();
-  const weekday = weekdays[now.getDay()];
-  const day = now.getDate();
-  const month = now.getMonth() + 1;
-  const year = now.getFullYear();
-  const englishDate = `${weekday} ${toBengaliDigits(day)} ${engMonths[month - 1]} ${toBengaliDigits(year)} খ্রিস্টাব্দ`;
-  document.getElementById('dateLine').textContent =
-    `আজ ${englishDate} | ${banglaDate}`;
+  const diff = Math.floor((date - start) / 86400000);
+
+  const monthDays = [31,31,31,31,31,30,30,30,30,30,30,30];
+
+  let days = diff >= 0 ? diff : diff + 365;
+
+  bm = 0;
+  while(days >= monthDays[bm]){
+    days -= monthDays[bm];
+    bm++;
+  }
+  bd = days + 1;
+
+  return `${toBn(bd)} ${bnMonths[bm]} ${toBn(by)} বঙ্গাব্দ`;
+}
+
+/* আজকের তারিখ */
+const now = new Date();
+
+const weekday = weekdays[now.getDay()];
+const engDate =
+  `${weekday} ${toBn(now.getDate())} ${engMonths[now.getMonth()]} ${toBn(now.getFullYear())} খ্রিস্টাব্দ`;
+
+const banglaDate = getBanglaDate(now);
+
+/* আউটপুট */
+document.getElementById('dateLine').textContent =
+  `আজ ${engDate} | ${banglaDate}`;
 </script>
 
 		
