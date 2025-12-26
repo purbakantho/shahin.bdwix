@@ -337,96 +337,81 @@ margin: 0;
   |&nbsp;&nbsp;&nbsp; 
  আপন&#2495; ক&#2495; আপন&#2494;র ন&#2495;উজপ&#2503;প&#2494;র অথব&#2494; অনল&#2494;ইন ট&#2495;ভ&#2495;, ই-প&#2503;প&#2494;র, ই-কম&#2494;র&#2509;স, কর&#2509;প&#2507;র&#2503;ট, ব&#2495;জন&#2503;স, প&#2494;র&#2509;স&#2507;ন&#2494;ল ও শ&#2495;ক&#2509;ষ&#2494; প&#2509;রত&#2495;ষ&#2509;ঠ&#2494;ন&#2503;র জন&#2509;য প&#2509;র&#2495;ম&#2495;য়&#2494;ম থ&#2495;ম খ&#2497;জছ&#2503;ন? আম&#2494;দ&#2503;র রয়&#2503;ছ&#2503; ১০০+ প&#2509;র&#2495;ম&#2495;য়&#2494;ম ওয়&#2494;র&#2509;ডপ&#2509;র&#2503;স ও ব&#2509;লগ&#2494;র থ&#2495;ম&#2404; আপন&#2495; ক&#2495; অনল&#2494;ইন র&#2503;ড&#2495;ও ক&#2495;&#2434;ব&#2494; অনল&#2494;ইল ল&#2494;ইভ ট&#2495;ভ&#2495; চ&#2509;য&#2494;ন&#2503;ল ব&#2494;ন&#2494;ত&#2503; চ&#2494;ন ? অনল&#2494;ইন ট&#2495;ভ&#2495;ত&#2503; আপন&#2495; আপন&#2494;র মন&#2503;র মত&#2507; কনট&#2503;ন&#2509;ট সম&#2509;প&#2509;রচ&#2494;র করত&#2503; প&#2494;রব&#2503;ন&#2404; আপন&#2494;র এল&#2494;ক&#2494;র স&#2434;ব&#2494;দ, প&#2509;র&#2494;ম&#2494;ন&#2509;য প&#2509;রত&#2495;ব&#2503;দন দ&#2495;য়&#2503; স&#2494;জ&#2495;য়&#2503; ন&#2495;ন আপন&#2494;র দ&#2504;ন&#2495;ক প&#2509;ল&#2503;ল&#2495;ষ&#2509;ট&#2404; আপন&#2495; চ&#2494;ইল&#2503; ইউট&#2495;উব/ভ&#2495;ড&#2495;ও ব&#2494; সর&#2494;সর&#2495; ক&#2507;ন ল&#2495;&#2434;ক দ&#2495;য়&#2503; প&#2509;ল&#2503;ল&#2495;ষ&#2509;ট ব&#2494;ন&#2495;য়&#2503; ২৪ ঘন&#2509;ট&#2494; সম&#2509;প&#2509;রচ&#2494;র  করত&#2503; প&#2494;র&#2503;ন&#2404; ত&#2494;ই আজই য&#2507;গ&#2494;য&#2507;গ কর&#2497;ন &#9742;  01711796839 এই ন&#2494;ম&#2509;ব&#2494;র&#2503;&#2404;|&nbsp;&nbsp;&nbsp; 
 </marquee>
-</div>
+
 
 </div>
     
      
        </div>	
 
-<div style="
-  font-family:'Noto Sans Bengali','SolaimanLipi',sans-serif;
-  background:#0c1438;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:12px 0;
-">
-  <div style="
-    background:linear-gradient(135deg,#1a1a1a,#4b006e);
-    color:white;
-    border-radius:12px;
-    padding:10px 24px;
-    box-shadow:0 4px 15px rgba(0,0,0,0.25);
-    font-size:18px;
-    font-weight:600;
-    animation: glow 3s infinite alternate;
-  ">
-    <span id="dateLine" style="animation:colorShift 2s infinite alternate;">লোড হচ্ছে...</span>
+<div <div class="wrapper">
+  <div class="date-box">
+    <span id="dateLine">লোড হচ্ছে...</span>
   </div>
 </div>
 
-<style>
-@keyframes colorShift {
-  0% { color:#e63946; }     /* লাল */
-  50% { color:#16a34a; }    /* সবুজ */
-  100% { color:#e63946; }   /* লাল আবার ফিরে আসবে */
-}
-@keyframes glow {
-  0% { box-shadow:0 0 10px #16a34a; }
-  100% { box-shadow:0 0 25px #e63946; }
-}
-</style>
-
 <script>
-  // ইংরেজি সংখ্যা থেকে বাংলা সংখ্যা
-  function toBengaliDigits(num) {
-    return String(num).replace(/[0-9]/g, d => '০১২৩৪৫৬৭৮৯'[d]);
+/* ইংরেজি সংখ্যা → বাংলা সংখ্যা */
+function toBn(num){
+  return String(num).replace(/[0-9]/g, d => '০১২৩৪৫৬৭৮৯'[d]);
+}
+
+/* নামসমূহ */
+const weekdays = ['রবিবার','সোমবার','মঙ্গলবার','বুধবার','বৃহস্পতিবার','শুক্রবার','শনিবার'];
+
+const engMonths = ['জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন',
+                   'জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর'];
+
+const bnMonths = ['বৈশাখ','জ্যৈষ্ঠ','আষাঢ়','শ্রাবণ','ভাদ্র','আশ্বিন',
+                  'কার্তিক','অগ্রহায়ণ','পৌষ','মাঘ','ফাল্গুন','চৈত্র'];
+
+/* বাংলা তারিখ হিসাব (সরল ও প্রচলিত পদ্ধতি) */
+function getBanglaDate(date){
+  const gy = date.getFullYear();
+  const gm = date.getMonth() + 1;
+  const gd = date.getDate();
+
+  let by = gy - 593;
+  let bm, bd;
+
+  const start = new Date(gy,3,14); // ১৪ এপ্রিল
+
+  if(date >= start){
+    by = gy - 593;
+  }else{
+    by = gy - 594;
   }
 
-  const weekdays = ['রবিবার','সোমবার','মঙ্গলবার','বুধবার','বৃহস্পতিবার','শুক্রবার','শনিবার'];
-  const engMonths = ['জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর'];
-  const banglaMonths = ['বৈশাখ','জ্যৈষ্ঠ','আষাঢ়','শ্রাবণ','ভাদ্র','আশ্বিন','কার্তিক','অগ্রহায়ণ','পৌষ','মাঘ','ফাল্গুন','চৈত্র'];
+  const diff = Math.floor((date - start) / 86400000);
 
-  const now = new Date();
-  const weekday = weekdays[now.getDay()];
-  const day = now.getDate();
-  const month = now.getMonth() + 1;
-  const year = now.getFullYear();
+  const monthDays = [31,31,31,31,31,30,30,30,30,30,30,30];
 
-  // বাংলা তারিখ নির্ণয় (প্রায় সঠিক)
-  function getBanglaDate(gDay, gMonth, gYear) {
-    const banglaStart = [14, 13, 14, 14, 15, 15, 16, 17, 17, 18, 17, 16];
-    const banglaMonthIndex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
-    let bDay, bMonth, bYear;
+  let days = diff >= 0 ? diff : diff + 365;
 
-    if (gDay < banglaStart[gMonth - 1]) {
-      bMonth = banglaMonthIndex[gMonth - 2 < 0 ? 11 : gMonth - 2];
-      bDay = gDay + (30 - banglaStart[gMonth - 2 < 0 ? 11 : gMonth - 2]) + 1;
-    } else {
-      bMonth = banglaMonthIndex[gMonth - 1];
-      bDay = gDay - banglaStart[gMonth - 1] + 1;
-    }
-
-    bYear = gMonth < 4 || (gMonth === 4 && gDay < 14)
-      ? gYear - 594
-      : gYear - 593;
-
-    return {
-      day: toBengaliDigits(bDay),
-      month: banglaMonths[bMonth],
-      year: toBengaliDigits(bYear)
-    };
+  bm = 0;
+  while(days >= monthDays[bm]){
+    days -= monthDays[bm];
+    bm++;
   }
+  bd = days + 1;
 
-  const bangla = getBanglaDate(day, month, year);
-  const englishDate = `${weekday} ${toBengaliDigits(day)} ${engMonths[month - 1]} ${toBengaliDigits(year)} খ্রিস্টাব্দ`;
-  const banglaDate = `${bangla.day} ${bangla.month} ${bangla.year} বঙ্গাব্দ`;
+  return `${toBn(bd)} ${bnMonths[bm]} ${toBn(by)} বঙ্গাব্দ`;
+}
 
-  document.getElementById('dateLine').textContent =
-    `আজ ${englishDate} | ${banglaDate}`;
+/* আজকের তারিখ */
+const now = new Date();
+
+const weekday = weekdays[now.getDay()];
+const engDate =
+  `${weekday} ${toBn(now.getDate())} ${engMonths[now.getMonth()]} ${toBn(now.getFullYear())} খ্রিস্টাব্দ`;
+
+const banglaDate = getBanglaDate(now);
+
+/* আউটপুট */
+document.getElementById('dateLine').textContent =
+  `আজ ${engDate} | ${banglaDate}`;
 </script>
-		
+
 				<div data-elementor-type="wp-page" data-elementor-id="1681" class="elementor elementor-1681" data-elementor-post-type="page">
 				<div class="elementor-element elementor-element-2a4f3b5 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent" data-id="2a4f3b5" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 					<div class="e-con-inner">
