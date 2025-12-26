@@ -344,6 +344,52 @@ margin: 0;
      
        </div>	
 
+<title>বাংলা ও ইংরেজি তারিখ</title>
+
+<style>
+body{
+  margin:0;
+}
+
+.wrapper{
+  font-family:'Noto Sans Bengali','SolaimanLipi',sans-serif;
+  background:#0c1438;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:12px 0;
+}
+
+.date-box{
+  background:linear-gradient(135deg,#1a1a1a,#4b006e);
+  color:white;
+  border-radius:12px;
+  padding:10px 24px;
+  box-shadow:0 4px 15px rgba(0,0,0,0.25);
+  font-size:18px;
+  font-weight:600;
+  animation: glow 3s infinite alternate;
+}
+
+#dateLine{
+  animation:colorShift 2s infinite alternate;
+}
+
+@keyframes colorShift {
+  0%   { color:#e63946; }   /* লাল */
+  50%  { color:#16a34a; }   /* সবুজ */
+  100% { color:#e63946; }
+}
+
+@keyframes glow {
+  0%   { box-shadow:0 0 10px #16a34a; }
+  100% { box-shadow:0 0 25px #e63946; }
+}
+</style>
+</head>
+
+<body>
+
 <div class="wrapper">
   <div class="date-box">
     <span id="dateLine">লোড হচ্ছে...</span>
@@ -411,6 +457,7 @@ const banglaDate = getBanglaDate(now);
 document.getElementById('dateLine').textContent =
   `আজ ${engDate} | ${banglaDate}`;
 </script>
+
 
 				<div data-elementor-type="wp-page" data-elementor-id="1681" class="elementor elementor-1681" data-elementor-post-type="page">
 				<div class="elementor-element elementor-element-2a4f3b5 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent" data-id="2a4f3b5" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
