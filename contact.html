@@ -3,7 +3,10 @@
     <div class="logo-circle">
        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh68-J25j9u5LzYyE6Z6L5qW6l5z5f6G7H8I9J0K1L2M3N4O5P6Q7R8S9T0/s1600/FINALshahin.jpg" alt="Shafiqul Alam Shahin">
     </div>
-    <h3 class="animated-text">যোগাযোগ করুন</h3>
+    
+    <a href="https://shahin.bdwix.com/" target="_blank" class="animated-link">
+      <h3 class="animated-text">যোগাযোগ করুন</h3>
+    </a>
   </div>
 
   <form action="https://formsubmit.co/shahinpurbadhala@gmail.com" method="POST" enctype="multipart/form-data" class="custom-form">
@@ -25,7 +28,7 @@
     <div class="input-group">
       <label>ফাইল আপলোড (প্রয়োজন হলে)</label>
       <input type="file" name="attachments" accept="image/*, audio/*, .pdf, .doc, .docx" multiple>
-      <small class="help-text">Ctrl চেপে ধরে একসাথে ৩টি ফাইল সিলেক্ট করতে পারবেন (সর্বোচ্চ ৫ মেগাবাইট)।</small>
+      <small class="help-text">Ctrl চেপে ধরে একসাথে ৩টি ফাইল সিলেক্ট করুন। (সর্বোচ্চ ৫ মেগাবাইট)</small>
     </div>
 
     <div class="input-group">
@@ -38,10 +41,9 @@
 </div>
 
 <style>
-  /* Color Palette matching your Banner */
   :root {
-    --bg-dark: #0f172a; /* Dark Navy from banner */
-    --gold: #c5a059;    /* Gold from logo */
+    --bg-dark: #0f172a; 
+    --gold: #c5a059;    
     --white: #ffffff;
   }
 
@@ -56,12 +58,10 @@
     border: 1px solid #ddd;
   }
 
-  /* Header Section */
   .form-header {
     background-color: var(--bg-dark);
     padding: 30px 20px;
     text-align: center;
-    position: relative;
   }
 
   .logo-circle {
@@ -84,9 +84,14 @@
     object-fit: cover;
   }
 
-  /* Text Animation */
+  /* Animated Link Styling */
+  .animated-link {
+    text-decoration: none; /* আন্ডারলাইন রিমুভ করার জন্য */
+    display: inline-block;
+  }
+
   .animated-text {
-    font-size: 24px;
+    font-size: 26px;
     font-weight: bold;
     margin: 0;
     background: linear-gradient(to right, #ffffff 20%, #c5a059 40%, #c5a059 60%, #ffffff 80%);
@@ -96,15 +101,18 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: shine 3s linear infinite;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .animated-text:hover {
+    transform: scale(1.05); /* মাউস নিলে লেখাটি একটু বড় হবে */
   }
 
   @keyframes shine {
-    to {
-      background-position: 200% center;
-    }
+    to { background-position: 200% center; }
   }
 
-  /* Form Fields Styling */
   .custom-form {
     padding: 30px;
   }
@@ -147,7 +155,6 @@
     display: block;
   }
 
-  /* Submit Button */
   .submit-btn {
     width: 100%;
     padding: 15px;
@@ -160,7 +167,6 @@
     font-weight: bold;
     transition: 0.4s;
     text-transform: uppercase;
-    letter-spacing: 1px;
   }
 
   .submit-btn:hover {
