@@ -154,3 +154,41 @@
     box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
   }
 </style>
+
+<script>
+  const form = document.querySelector('.custom-form');
+  
+  form.addEventListener('submit', function(e) {
+    e.preventDefault(); // ফর্মের ডিফল্ট সাবমিট বন্ধ করা
+    
+    const formData = new FormData(this);
+    const submitBtn = document.querySelector('.submit-btn');
+    
+    // বাটন টেক্সট পরিবর্তন (ঐচ্ছিক)
+    submitBtn.innerText = "পাঠানো হচ্ছে...";
+    submitBtn.disabled = true;
+
+    fetch(this.action, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+    .then(response => {
+      if (response.ok) {
+        // মেইল সফলভাবে গেলে আপনার নির্দিষ্ট থ্যাংক ইউ পেজে নিয়ে যাবে
+        window.location.href = "https://shahinpurbadhala.blogspot.com/p/thanks.html";
+      } else {
+        alert("দুঃখিত, কোনো সমস্যা হয়েছে। আবার চেষ্টা করুন।");
+        submitBtn.innerText = "বার্তা পাঠান";
+        submitBtn.disabled = false;
+      }
+    })
+    .catch(error => {
+      alert("ইন্টারনেট সংযোগ চেক করুন।");
+      submitBtn.innerText = "বার্তা পাঠান";
+      submitBtn.disabled = false;
+    });
+  });
+</script>
