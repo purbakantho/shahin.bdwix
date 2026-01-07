@@ -5,15 +5,16 @@
         <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh2LknzHx1jledPoj-GyooihJxOmjZBVopUxSqN6CUexD2AlO-tMjdTWR9bROPkwqxQaTjCFX05GnCLJVmTslqUTp1UlTR3Eyzde5OeCDN6NukqasDODS-hCB-HP2t-sC-YzQZXICx9TfvNfPkURfXxg0ZkVDehPz4QqNuQWIZam8RgOeIPSUx0xqHbbPnl/s1600/Shahin-logo.png" alt="Shafiqul Alam Shahin">
       </a>
     </div>
-    
     <a href="https://shahin.bdwix.com/" target="_blank" style="text-decoration: none;">
       <h3 class="animated-text">যোগাযোগ করুন</h3>
     </a>
   </div>
 
-  <form id="shahinContactForm" class="custom-form">
+  <form action="https://formsubmit.co/shahinpurbadhala@gmail.com" method="POST" enctype="multipart/form-data" class="custom-form">
+    
     <input type="hidden" name="_captcha" value="false">
     <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_next" value="https://shahin.bdwix.com/">
 
     <div class="input-group">
       <label>আপনার নাম</label>
@@ -28,7 +29,7 @@
     <div class="input-group">
       <label>ফাইল আপলোড (ঐচ্ছিক)</label>
       <input type="file" name="attachments" accept="image/*, audio/*, .pdf, .doc, .docx" multiple>
-      <small class="help-text">সর্বোচ্চ ৫ মেগাবাইটের ৩টি ফাইল পাঠানো যাবে।</small>
+      <small class="help-text" style="color: #666; font-size: 11px;">সর্বোচ্চ ৫ মেগাবাইটের ফাইল পাঠানো যাবে।</small>
     </div>
 
     <div class="input-group">
@@ -36,7 +37,7 @@
       <textarea name="message" rows="4" placeholder="এখানে আপনার বার্তা লিখুন..." required></textarea>
     </div>
 
-    <button type="submit" id="submitBtn" class="submit-btn">বার্তা পাঠান</button>
+    <button type="submit" class="submit-btn">বার্তা পাঠান</button>
     
     <a href="https://wa.me/8801711796839" target="_blank" class="whatsapp-btn">
       <svg style="width:20px; height:20px; vertical-align:middle; margin-right:8px;" viewBox="0 0 24 24">
@@ -51,47 +52,14 @@
   :root { --bg-dark: #0f172a; --gold: #d4af37; --white: #ffffff; --whatsapp: #25d366; }
   .contact-container { max-width: 450px; margin: 30px auto; background: var(--white); border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.15); font-family: 'Segoe UI', Tahoma, sans-serif; overflow: hidden; border: 1px solid #ddd; }
   .form-header { background-color: var(--bg-dark); padding: 35px 20px; text-align: center; border-bottom: 4px solid var(--gold); }
-  .logo-circle { width: 110px; height: 110px; background: #fff; border: 3px solid var(--gold); border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; overflow: hidden; transition: transform 0.3s ease; }
+  .logo-circle { width: 110px; height: 110px; background: #fff; border: 3px solid var(--gold); border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
   .logo-circle img { width: 100%; height: 100%; object-fit: cover; }
   .animated-text { font-size: 26px; font-weight: 800; background: linear-gradient(90deg, #fff 0%, #d4af37 50%, #fff 100%); background-size: 200% auto; color: #fff; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: goldShine 3s linear infinite; }
   @keyframes goldShine { to { background-position: 200% center; } }
   .custom-form { padding: 30px; }
   .input-group { margin-bottom: 20px; }
   .input-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #333; }
-  .input-group input, .input-group textarea { width: 100%; padding: 12px; border: 1.5px solid #eee; border-radius: 10px; font-size: 14px; }
-  .input-group input:focus { border-color: var(--gold); outline: none; }
-  .submit-btn { width: 100%; padding: 15px; background: var(--bg-dark); color: var(--gold); border: 2px solid var(--gold); border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 16px; margin-bottom: 15px; transition: 0.3s; }
-  .submit-btn:hover { background: var(--gold); color: #fff; }
-  .whatsapp-btn { display: flex; align-items: center; justify-content: center; width: 100%; padding: 15px; background: var(--whatsapp); color: white; text-decoration: none; border-radius: 10px; font-weight: bold; font-size: 16px; transition: 0.3s; }
+  .input-group input, .input-group textarea { width: 100%; padding: 12px; border: 1.5px solid #eee; border-radius: 10px; font-size: 14px; box-sizing: border-box; }
+  .submit-btn { width: 100%; padding: 15px; background: var(--bg-dark); color: var(--gold); border: 2px solid var(--gold); border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 16px; margin-bottom: 15px; }
+  .whatsapp-btn { display: flex; align-items: center; justify-content: center; width: 100%; padding: 15px; background: var(--whatsapp); color: white; text-decoration: none; border-radius: 10px; font-weight: bold; box-sizing: border-box; }
 </style>
-
-<script>
-  document.getElementById('shahinContactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const btn = document.getElementById('submitBtn');
-    const originalText = btn.innerText;
-    
-    btn.innerText = "পাঠানো হচ্ছে...";
-    btn.disabled = true;
-
-    const formData = new FormData(this);
-    
-    // Using fetch with AJAX to prevent redirection to FormSubmit page
-    fetch('https://formsubmit.co/ajax/shahinpurbadhala@gmail.com', {
-      method: 'POST',
-      body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-      // Instant redirect to your target link
-      window.location.replace("https://shahin.bdwix.com/");
-    })
-    .catch(error => {
-      console.error('Error:', error);
-      alert('দুঃখিত, আবার চেষ্টা করুন।');
-      btn.innerText = originalText;
-      btn.disabled = false;
-    });
-  });
-</script>
