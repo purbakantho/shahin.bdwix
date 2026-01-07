@@ -1,8 +1,9 @@
 <div class="contact-container">
   <div class="form-header">
     <div class="logo-circle">
-          <a href="https://shahin.bdwix.com/" target="_blank" style="text-decoration: none
-       <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh2LknzHx1jledPoj-GyooihJxOmjZBVopUxSqN6CUexD2AlO-tMjdTWR9bROPkwqxQaTjCFX05GnCLJVmTslqUTp1UlTR3Eyzde5OeCDN6NukqasDODS-hCB-HP2t-sC-YzQZXICx9TfvNfPkURfXxg0ZkVDehPz4QqNuQWIZam8RgOeIPSUx0xqHbbPnl/s1600/Shahin-logo.png" alt="Shafiqul Alam Shahin">
+      <a href="https://shahin.bdwix.com/" target="_blank">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh2LknzHx1jledPoj-GyooihJxOmjZBVopUxSqN6CUexD2AlO-tMjdTWR9bROPkwqxQaTjCFX05GnCLJVmTslqUTp1UlTR3Eyzde5OeCDN6NukqasDODS-hCB-HP2t-sC-YzQZXICx9TfvNfPkURfXxg0ZkVDehPz4QqNuQWIZam8RgOeIPSUx0xqHbbPnl/s1600/Shahin-logo.png" alt="Shafiqul Alam Shahin">
+      </a>
     </div>
     
     <a href="https://shahin.bdwix.com/" target="_blank" style="text-decoration: none;">
@@ -38,6 +39,13 @@
     </div>
 
     <button type="submit" class="submit-btn">বার্তা পাঠান</button>
+    
+    <a href="https://wa.me/8801711796839" target="_blank" class="whatsapp-btn">
+      <svg style="width:20px; height:20px; vertical-align:middle; margin-right:8px;" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42 1.56 1.56 2.41 3.63 2.41 5.83 0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.17-3.12.82.83-3.04-.2-.31a8.132 8.132 0 0 1-1.24-4.38c0-4.54 3.7-8.23 8.23-8.23m-3.8 4.63c-.21 0-.35.1-.46.23-.11.12-.42.41-.42 1s.43 1.17.49 1.25c.06.08.83 1.28 2.02 1.79.29.12.51.19.68.25.29.09.55.08.76.05.23-.04.72-.3 0-.58.11-.27.11-.5.08-.58-.04-.08-.12-.12-.25-.19-.13-.07-.75-.37-.87-.41-.12-.04-.21-.06-.3.08-.09.14-.35.43-.43.53-.08.09-.16.1-.29.04-.13-.07-.55-.21-1.05-.66-.39-.34-.65-.77-.73-.9-.08-.13-.01-.2.06-.27.06-.06.13-.15.19-.23.07-.08.09-.14.13-.23.04-.09.02-.17-.01-.23-.03-.07-.3-.72-.41-.99-.11-.26-.22-.22-.3-.22z"/>
+      </svg>
+      WhatsApp এ কথা বলুন
+    </a>
   </form>
 </div>
 
@@ -46,6 +54,7 @@
     --bg-dark: #0f172a; 
     --gold: #d4af37;    
     --white: #ffffff;
+    --whatsapp: #25d366;
   }
 
   .contact-container {
@@ -66,7 +75,6 @@
     border-bottom: 4px solid var(--gold);
   }
 
-  /* গোলাকার ছবির ডিজাইন */
   .logo-circle {
     width: 100px;
     height: 100px;
@@ -78,6 +86,11 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+
+  .logo-circle:hover {
+    transform: scale(1.05);
   }
 
   .logo-circle img {
@@ -86,7 +99,6 @@
     object-fit: cover;
   }
 
-  /* গোল্ডেন শাইন অ্যানিমেশন */
   .animated-text {
     font-size: 26px;
     font-weight: 800;
@@ -104,7 +116,6 @@
     to { background-position: 200% center; }
   }
 
-  /* Form Fields Styling */
   .custom-form { padding: 30px; }
   .input-group { margin-bottom: 20px; }
   .input-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #333; }
@@ -113,11 +124,31 @@
   }
   .input-group input:focus { border-color: var(--gold); outline: none; }
 
-  /* Submit Button */
   .submit-btn {
     width: 100%; padding: 15px; background: var(--bg-dark); color: var(--gold);
     border: 2px solid var(--gold); border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 16px;
+    margin-bottom: 15px;
+    transition: 0.3s;
   }
   .submit-btn:hover { background: var(--gold); color: #fff; }
-</style>
 
+  /* হোয়াটসঅ্যাপ বাটন স্টাইল */
+  .whatsapp-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 15px;
+    background: var(--whatsapp);
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 16px;
+    transition: 0.3s;
+  }
+  .whatsapp-btn:hover {
+    background: #1eb954;
+    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+  }
+</style>
