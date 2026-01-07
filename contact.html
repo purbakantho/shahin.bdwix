@@ -1,7 +1,9 @@
 <div class="contact-container">
   <div class="form-header">
-    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEihG3Y6..." alt="Shafiqul Alam Shahin" style="width: 100%; border-radius: 8px 8px 0 0;">
-    <h3>যোগাযোগ করুন</h3>
+    <div class="logo-circle">
+       <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh68-J25j9u5LzYyE6Z6L5qW6l5z5f6G7H8I9J0K1L2M3N4O5P6Q7R8S9T0/s1600/FINALshahin.jpg" alt="Shafiqul Alam Shahin">
+    </div>
+    <h3 class="animated-text">যোগাযোগ করুন</h3>
   </div>
 
   <form action="https://formsubmit.co/shahinpurbadhala@gmail.com" method="POST" enctype="multipart/form-data" class="custom-form">
@@ -21,7 +23,7 @@
     </div>
 
     <div class="input-group">
-      <label>ফাইল আপলোড (ঐচ্ছিক)</label>
+      <label>ফাইল আপলোড (প্রয়োজন হলে)</label>
       <input type="file" name="attachments" accept="image/*, audio/*, .pdf, .doc, .docx" multiple>
       <small class="help-text">Ctrl চেপে ধরে একসাথে ৩টি ফাইল সিলেক্ট করতে পারবেন (সর্বোচ্চ ৫ মেগাবাইট)।</small>
     </div>
@@ -36,50 +38,85 @@
 </div>
 
 <style>
-  /* Match the dark navy from your banner */
+  /* Color Palette matching your Banner */
   :root {
-    --primary-dark: #1a252f; 
-    --accent-gold: #b39359;
-    --text-light: #f4f4f4;
+    --bg-dark: #0f172a; /* Dark Navy from banner */
+    --gold: #c5a059;    /* Gold from logo */
+    --white: #ffffff;
   }
 
   .contact-container {
     max-width: 450px;
-    margin: 20px auto;
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 30px auto;
+    background: var(--white);
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    font-family: 'Segoe UI', Arial, sans-serif;
     overflow: hidden;
-    border: 1px solid #eee;
+    border: 1px solid #ddd;
   }
 
+  /* Header Section */
   .form-header {
-    background-color: var(--primary-dark);
-    padding: 20px;
+    background-color: var(--bg-dark);
+    padding: 30px 20px;
     text-align: center;
-    color: white;
+    position: relative;
   }
 
-  .form-header h3 {
-    margin-top: 15px;
-    margin-bottom: 0;
-    font-size: 22px;
-    color: var(--accent-gold);
+  .logo-circle {
+    width: 90px;
+    height: 90px;
+    background: var(--bg-dark);
+    border: 3px solid var(--gold);
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(197, 160, 89, 0.4);
   }
 
+  .logo-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Text Animation */
+  .animated-text {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+    background: linear-gradient(to right, #ffffff 20%, #c5a059 40%, #c5a059 60%, #ffffff 80%);
+    background-size: 200% auto;
+    color: #fff;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s linear infinite;
+  }
+
+  @keyframes shine {
+    to {
+      background-position: 200% center;
+    }
+  }
+
+  /* Form Fields Styling */
   .custom-form {
-    padding: 25px;
+    padding: 30px;
   }
 
   .input-group {
-    margin-bottom: 18px;
+    margin-bottom: 20px;
   }
 
   .input-group label {
     display: block;
     margin-bottom: 8px;
-    color: #333;
+    color: #444;
     font-size: 14px;
     font-weight: 600;
   }
@@ -88,51 +125,54 @@
   .input-group textarea {
     width: 100%;
     padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    box-sizing: border-box;
+    border: 1.5px solid #eee;
+    border-radius: 10px;
+    background: #f9f9f9;
     font-size: 14px;
-    transition: border 0.3s ease;
+    transition: all 0.3s ease;
   }
 
   .input-group input:focus, 
   .input-group textarea:focus {
     outline: none;
-    border-color: var(--accent-gold);
-    box-shadow: 0 0 5px rgba(179, 147, 89, 0.3);
+    border-color: var(--gold);
+    background: #fff;
+    box-shadow: 0 0 8px rgba(197, 160, 89, 0.2);
   }
 
   .help-text {
-    color: #777;
+    color: #888;
     font-size: 11px;
+    margin-top: 6px;
     display: block;
-    margin-top: 5px;
-    line-height: 1.4;
   }
 
+  /* Submit Button */
   .submit-btn {
     width: 100%;
-    padding: 14px;
-    background-color: var(--primary-dark);
-    color: var(--accent-gold);
-    border: 2px solid var(--accent-gold);
-    border-radius: 6px;
+    padding: 15px;
+    background: var(--bg-dark);
+    color: var(--gold);
+    border: 2px solid var(--gold);
+    border-radius: 10px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 17px;
     font-weight: bold;
-    transition: all 0.3s ease;
+    transition: 0.4s;
     text-transform: uppercase;
+    letter-spacing: 1px;
   }
 
   .submit-btn:hover {
-    background-color: var(--accent-gold);
-    color: white;
+    background: var(--gold);
+    color: var(--bg-dark);
+    box-shadow: 0 5px 15px rgba(197, 160, 89, 0.4);
+    transform: translateY(-2px);
   }
 
-  /* Responsive adjustment */
   @media (max-width: 480px) {
     .contact-container {
-      margin: 10px;
+      margin: 15px;
     }
   }
 </style>
