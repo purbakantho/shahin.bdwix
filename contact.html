@@ -11,11 +11,10 @@
     </a>
   </div>
 
-  <form action="https://formsubmit.co/shahinpurbadhala@gmail.com" method="POST" enctype="multipart/form-data" class="custom-form">
+  <form id="contactForm" action="https://formsubmit.co/ajax/shahinpurbadhala@gmail.com" method="POST" enctype="multipart/form-data" class="custom-form">
     
     <input type="hidden" name="_captcha" value="false">
     <input type="hidden" name="_template" value="table">
-    <input type="hidden" name="_success" value="https://shahinpurbadhala.blogspot.com/p/thanks.html">
 
     <div class="input-group">
       <label>আপনার নাম</label>
@@ -38,7 +37,7 @@
       <textarea name="message" rows="4" placeholder="এখানে আপনার বার্তা লিখুন..." required></textarea>
     </div>
 
-    <button type="submit" class="submit-btn">বার্তা পাঠান</button>
+    <button type="submit" id="submitBtn" class="submit-btn">বার্তা পাঠান</button>
     
     <a href="https://wa.me/8801711796839" target="_blank" class="whatsapp-btn">
       <svg style="width:20px; height:20px; vertical-align:middle; margin-right:8px;" viewBox="0 0 24 24">
@@ -49,6 +48,10 @@
   </form>
 </div>
 
+<div id="successMsg" style="display:none; text-align:center; padding:20px; color: green; font-weight:bold;">
+  ধন্যবাদ! আপনার বার্তা সফলভাবে পাঠানো হয়েছে।
+</div>
+
 <style>
   :root {
     --bg-dark: #0f172a; 
@@ -56,7 +59,6 @@
     --white: #ffffff;
     --whatsapp: #25d366;
   }
-
   .contact-container {
     max-width: 450px;
     margin: 30px auto;
@@ -67,58 +69,27 @@
     overflow: hidden;
     border: 1px solid #ddd;
   }
-
   .form-header {
     background-color: var(--bg-dark);
     padding: 35px 20px;
     text-align: center;
     border-bottom: 4px solid var(--gold);
   }
-
-  /* গোলাকার ছবির বিশেষ ডিজাইন */
   .logo-circle {
-    width: 110px;
-    height: 110px;
-    background: #fff;
-    border: 3px solid var(--gold);
-    border-radius: 50%;
-    margin: 0 auto 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden; /* ছবি যাতে বৃত্তের বাইরে না যায় */
-    transition: transform 0.3s ease;
+    width: 110px; height: 110px; background: #fff; border: 3px solid var(--gold);
+    border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center;
+    justify-content: center; overflow: hidden; transition: transform 0.3s ease;
   }
-
-  .logo-circle:hover {
-    transform: scale(1.05);
-  }
-
-  /* ছবিকে পুরো বৃত্তে সেট করার কোড */
-  .logo-circle img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover; /* এটি ছবিকে পুরো বৃত্ত জুড়ে সেট করবে */
-  }
-
+  .logo-circle:hover { transform: scale(1.05); }
+  .logo-circle img { width: 100%; height: 100%; display: block; object-fit: cover; }
   .animated-text {
-    font-size: 26px;
-    font-weight: 800;
-    margin: 0;
+    font-size: 26px; font-weight: 800; margin: 0;
     background: linear-gradient(90deg, #fff 0%, #d4af37 50%, #fff 100%);
-    background-size: 200% auto;
-    color: #fff;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    background-size: 200% auto; color: #fff; background-clip: text;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     animation: goldShine 3s linear infinite;
   }
-
-  @keyframes goldShine {
-    to { background-position: 200% center; }
-  }
-
+  @keyframes goldShine { to { background-position: 200% center; } }
   .custom-form { padding: 30px; }
   .input-group { margin-bottom: 20px; }
   .input-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #333; }
@@ -126,47 +97,32 @@
     width: 100%; padding: 12px; border: 1.5px solid #eee; border-radius: 10px; font-size: 14px;
   }
   .input-group input:focus { border-color: var(--gold); outline: none; }
-
   .submit-btn {
     width: 100%; padding: 15px; background: var(--bg-dark); color: var(--gold);
     border: 2px solid var(--gold); border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 16px;
-    margin-bottom: 15px;
-    transition: 0.3s;
+    margin-bottom: 15px; transition: 0.3s;
   }
   .submit-btn:hover { background: var(--gold); color: #fff; }
-
   .whatsapp-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: 15px;
-    background: var(--whatsapp);
-    color: white;
-    text-decoration: none;
-    border-radius: 10px;
-    font-weight: bold;
-    font-size: 16px;
-    transition: 0.3s;
+    display: flex; align-items: center; justify-content: center; width: 100%;
+    padding: 15px; background: var(--whatsapp); color: white; text-decoration: none;
+    border-radius: 10px; font-weight: bold; font-size: 16px; transition: 0.3s;
   }
-  .whatsapp-btn:hover {
-    background: #1eb954;
-    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
-  }
+  .whatsapp-btn:hover { background: #1eb954; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3); }
 </style>
 
 <script>
-  const form = document.querySelector('.custom-form');
-  
-  form.addEventListener('submit', function(e) {
-    e.preventDefault(); // ফর্মের ডিফল্ট সাবমিট বন্ধ করা
+  // ফর্ম সাবমিট কন্ট্রোল করার স্ক্রিপ্ট
+  const contactForm = document.getElementById('contactForm');
+  const submitBtn = document.getElementById('submitBtn');
+
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
     
-    const formData = new FormData(this);
-    const submitBtn = document.querySelector('.submit-btn');
-    
-    // বাটন টেক্সট পরিবর্তন (ঐচ্ছিক)
     submitBtn.innerText = "পাঠানো হচ্ছে...";
     submitBtn.disabled = true;
+
+    const formData = new FormData(this);
 
     fetch(this.action, {
       method: 'POST',
@@ -177,16 +133,17 @@
     })
     .then(response => {
       if (response.ok) {
-        // মেইল সফলভাবে গেলে আপনার নির্দিষ্ট থ্যাংক ইউ পেজে নিয়ে যাবে
+        // সফল হলে সরাসরি আপনার থ্যাংক ইউ পেজে চলে যাবে
         window.location.href = "https://shahinpurbadhala.blogspot.com/p/thanks.html";
       } else {
-        alert("দুঃখিত, কোনো সমস্যা হয়েছে। আবার চেষ্টা করুন।");
+        alert("দুঃখিত, কোনো ভুল হয়েছে। আবার চেষ্টা করুন।");
         submitBtn.innerText = "বার্তা পাঠান";
         submitBtn.disabled = false;
       }
     })
     .catch(error => {
-      alert("ইন্টারনেট সংযোগ চেক করুন।");
+      console.error('Error:', error);
+      alert("নেটওয়ার্ক সমস্যা! আবার চেষ্টা করুন।");
       submitBtn.innerText = "বার্তা পাঠান";
       submitBtn.disabled = false;
     });
