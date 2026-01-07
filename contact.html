@@ -11,29 +11,29 @@
     </a>
   </div>
 
-  <form id="myContactForm" class="custom-form">
+  <form id="shahinContactForm" class="custom-form">
     <input type="hidden" name="_captcha" value="false">
     <input type="hidden" name="_template" value="table">
 
     <div class="input-group">
       <label>আপনার নাম</label>
-      <input type="text" name="name" id="name" placeholder="আপনার নাম লিখুন" required>
+      <input type="text" name="name" placeholder="আপনার নাম লিখুন" required>
     </div>
 
     <div class="input-group">
       <label>ইমেইল এড্রেস</label>
-      <input type="email" name="email" id="email" placeholder="আপনার ইমেইল" required>
+      <input type="email" name="email" placeholder="আপনার ইমেইল" required>
     </div>
 
     <div class="input-group">
       <label>ফাইল আপলোড (ঐচ্ছিক)</label>
-      <input type="file" name="attachments" id="attachments" accept="image/*, audio/*, .pdf, .doc, .docx" multiple>
+      <input type="file" name="attachments" accept="image/*, audio/*, .pdf, .doc, .docx" multiple>
       <small class="help-text">সর্বোচ্চ ৫ মেগাবাইটের ৩টি ফাইল পাঠানো যাবে।</small>
     </div>
 
     <div class="input-group">
       <label>আপনার বার্তা</label>
-      <textarea name="message" id="message" rows="4" placeholder="এখানে আপনার বার্তা লিখুন..." required></textarea>
+      <textarea name="message" rows="4" placeholder="এখানে আপনার বার্তা লিখুন..." required></textarea>
     </div>
 
     <button type="submit" id="submitBtn" class="submit-btn">বার্তা পাঠান</button>
@@ -59,35 +59,38 @@
   .input-group { margin-bottom: 20px; }
   .input-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #333; }
   .input-group input, .input-group textarea { width: 100%; padding: 12px; border: 1.5px solid #eee; border-radius: 10px; font-size: 14px; }
-  .submit-btn { width: 100%; padding: 15px; background: var(--bg-dark); color: var(--gold); border: 2px solid var(--gold); border-radius: 10px; cursor: pointer; font-weight: bold; transition: 0.3s; margin-bottom: 15px;}
+  .input-group input:focus { border-color: var(--gold); outline: none; }
+  .submit-btn { width: 100%; padding: 15px; background: var(--bg-dark); color: var(--gold); border: 2px solid var(--gold); border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 16px; margin-bottom: 15px; transition: 0.3s; }
   .submit-btn:hover { background: var(--gold); color: #fff; }
-  .whatsapp-btn { display: flex; align-items: center; justify-content: center; width: 100%; padding: 15px; background: var(--whatsapp); color: white; text-decoration: none; border-radius: 10px; font-weight: bold; }
+  .whatsapp-btn { display: flex; align-items: center; justify-content: center; width: 100%; padding: 15px; background: var(--whatsapp); color: white; text-decoration: none; border-radius: 10px; font-weight: bold; font-size: 16px; transition: 0.3s; }
 </style>
 
 <script>
-  document.getElementById('myContactForm').addEventListener('submit', function(e) {
+  document.getElementById('shahinContactForm').addEventListener('submit', function(e) {
     e.preventDefault();
     
     const btn = document.getElementById('submitBtn');
-    btn.innerHTML = "পাঠানো হচ্ছে...";
+    const originalText = btn.innerText;
+    
+    btn.innerText = "পাঠানো হচ্ছে...";
     btn.disabled = true;
 
-    // AJAX এর মাধ্যমে সাবমিট
     const formData = new FormData(this);
     
+    // Using fetch with AJAX to prevent redirection to FormSubmit page
     fetch('https://formsubmit.co/ajax/shahinpurbadhala@gmail.com', {
       method: 'POST',
       body: formData
     })
     .then(response => response.json())
     .then(data => {
-      // সফল হলে সরাসরি আপনার ব্লগারে চলে যাবে
-      window.location.replace("https://shahinpurbadhala.blogspot.com/p/thanks.html");
+      // Instant redirect to your target link
+      window.location.replace("https://shahin.bdwix.com/");
     })
     .catch(error => {
       console.error('Error:', error);
-      alert('দুঃখিত, কোনো সমস্যা হয়েছে। আবার চেষ্টা করুন।');
-      btn.innerHTML = "বার্তা পাঠান";
+      alert('দুঃখিত, আবার চেষ্টা করুন।');
+      btn.innerText = originalText;
       btn.disabled = false;
     });
   });
