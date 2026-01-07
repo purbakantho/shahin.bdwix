@@ -26,9 +26,9 @@
     </div>
 
     <div class="input-group">
-      <label>ফাইল আপলোড (প্রয়োজন হলে)</label>
+      <label>ফাইল আপলোড (ঐচ্ছিক)</label>
       <input type="file" name="attachments" accept="image/*, audio/*, .pdf, .doc, .docx" multiple>
-      <small class="help-text">Ctrl চেপে ধরে একসাথে ৩টি ফাইল সিলেক্ট করুন। (সর্বোচ্চ ৫ মেগাবাইট)</small>
+      <small class="help-text">Ctrl চেপে ধরে ৩টি ফাইল পর্যন্ত সিলেক্ট করা যাবে।</small>
     </div>
 
     <div class="input-group">
@@ -41,9 +41,10 @@
 </div>
 
 <style>
+  /* Color Theme matching your Brand */
   :root {
-    --bg-dark: #0f172a; 
-    --gold: #c5a059;    
+    --bg-dark: #0f172a; /* Navy Blue */
+    --gold: #d4af37;    /* Premium Gold */
     --white: #ffffff;
   }
 
@@ -52,67 +53,67 @@
     margin: 30px auto;
     background: var(--white);
     border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-    font-family: 'Segoe UI', Arial, sans-serif;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     overflow: hidden;
-    border: 1px solid #ddd;
+    border: 1px solid #e0e0e0;
   }
 
   .form-header {
     background-color: var(--bg-dark);
-    padding: 30px 20px;
+    padding: 35px 20px;
     text-align: center;
+    border-bottom: 4px solid var(--gold);
   }
 
+  /* গোলাকার ছবি সেটিংস */
   .logo-circle {
-    width: 100px;
-    height: 100px;
-    background: #fff; /* ছবির ব্যাকগ্রাউন্ড সাদা থাকলে ভালো দেখাবে */
-    border: 3px solid var(--gold);
+    width: 110px;
+    height: 110px;
+    background: #fff;
+    border: 4px solid var(--gold);
     border-radius: 50%;
     margin: 0 auto 15px;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    box-shadow: 0 0 15px rgba(197, 160, 89, 0.4);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
   }
 
   .logo-circle img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* ছবি গোল ফ্রেমের ভেতরে অটো সেট হবে */
+    display: block;
   }
 
-  /* Animated Link Styling */
+  /* ক্লিকেবল লিঙ্ক */
   .animated-link {
     text-decoration: none;
     display: inline-block;
   }
 
+  /* উন্নত গোল্ডেন শাইন অ্যানিমেশন */
   .animated-text {
-    font-size: 26px;
-    font-weight: bold;
+    font-size: 28px;
+    font-weight: 800;
     margin: 0;
-    background: linear-gradient(to right, #ffffff 20%, #c5a059 40%, #c5a059 60%, #ffffff 80%);
+    background: linear-gradient(90deg, #fff 0%, #d4af37 25%, #fff 50%, #d4af37 75%, #fff 100%);
     background-size: 200% auto;
     color: #fff;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: shine 3s linear infinite;
+    animation: goldShine 3s linear infinite;
     cursor: pointer;
-    transition: transform 0.3s ease;
   }
 
-  .animated-text:hover {
-    transform: scale(1.05);
-  }
-
-  @keyframes shine {
+  @keyframes goldShine {
     to { background-position: 200% center; }
   }
 
+  /* Form Fields */
   .custom-form {
     padding: 30px;
   }
@@ -124,20 +125,20 @@
   .input-group label {
     display: block;
     margin-bottom: 8px;
-    color: #444;
+    color: #333;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 700;
   }
 
   .input-group input, 
   .input-group textarea {
     width: 100%;
-    padding: 12px;
-    border: 1.5px solid #eee;
-    border-radius: 10px;
-    background: #f9f9f9;
-    font-size: 14px;
-    transition: all 0.3s ease;
+    padding: 14px;
+    border: 2px solid #f0f0f0;
+    border-radius: 12px;
+    background: #fdfdfd;
+    font-size: 15px;
+    transition: 0.3s;
   }
 
   .input-group input:focus, 
@@ -145,40 +146,47 @@
     outline: none;
     border-color: var(--gold);
     background: #fff;
-    box-shadow: 0 0 8px rgba(197, 160, 89, 0.2);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.15);
   }
 
   .help-text {
-    color: #888;
+    color: #999;
     font-size: 11px;
-    margin-top: 6px;
+    margin-top: 5px;
     display: block;
   }
 
+  /* Submit Button */
   .submit-btn {
     width: 100%;
-    padding: 15px;
+    padding: 16px;
     background: var(--bg-dark);
     color: var(--gold);
     border: 2px solid var(--gold);
-    border-radius: 10px;
+    border-radius: 12px;
     cursor: pointer;
-    font-size: 17px;
+    font-size: 18px;
     font-weight: bold;
-    transition: 0.4s;
+    transition: all 0.4s ease;
     text-transform: uppercase;
+    letter-spacing: 1px;
   }
 
   .submit-btn:hover {
     background: var(--gold);
-    color: var(--bg-dark);
-    box-shadow: 0 5px 15px rgba(197, 160, 89, 0.4);
-    transform: translateY(-2px);
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+    transform: translateY(-3px);
   }
 
+  /* Mobile Responsive */
   @media (max-width: 480px) {
     .contact-container {
       margin: 15px;
+      max-width: 95%;
+    }
+    .animated-text {
+      font-size: 24px;
     }
   }
 </style>
