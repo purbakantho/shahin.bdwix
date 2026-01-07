@@ -1,7 +1,7 @@
 <div class="contact-container">
   <div class="form-header">
     <div class="logo-circle">
-      <a href="https://shahin.bdwix.com/" target="_blank">
+      <a href="https://shahin.bdwix.com/" target="_blank" style="display: block; width: 100%; height: 100%;">
         <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh2LknzHx1jledPoj-GyooihJxOmjZBVopUxSqN6CUexD2AlO-tMjdTWR9bROPkwqxQaTjCFX05GnCLJVmTslqUTp1UlTR3Eyzde5OeCDN6NukqasDODS-hCB-HP2t-sC-YzQZXICx9TfvNfPkURfXxg0ZkVDehPz4QqNuQWIZam8RgOeIPSUx0xqHbbPnl/s1600/Shahin-logo.png" alt="Shafiqul Alam Shahin">
       </a>
     </div>
@@ -75,18 +75,18 @@
     border-bottom: 4px solid var(--gold);
   }
 
-  /* বড় এবং গোলাকার ছবির ডিজাইন */
+  /* গোলাকার ছবির বিশেষ ডিজাইন */
   .logo-circle {
-    width: 80px; /* সাইজ বড় করা হয়েছে */
-    height: 80px; /* সাইজ বড় করা হয়েছে */
+    width: 110px;
+    height: 110px;
     background: #fff;
-    border: 4px solid var(--gold);
+    border: 3px solid var(--gold);
     border-radius: 50%;
     margin: 0 auto 15px;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    overflow: hidden; /* ছবি যাতে বৃত্তের বাইরে না যায় */
     transition: transform 0.3s ease;
   }
 
@@ -94,10 +94,12 @@
     transform: scale(1.05);
   }
 
+  /* ছবিকে পুরো বৃত্তে সেট করার কোড */
   .logo-circle img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    display: block;
+    object-fit: cover; /* এটি ছবিকে পুরো বৃত্ত জুড়ে সেট করবে */
   }
 
   .animated-text {
@@ -152,4 +154,3 @@
     box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
   }
 </style>
-
