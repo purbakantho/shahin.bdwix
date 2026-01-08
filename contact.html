@@ -1,8 +1,10 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <div class="contact-container">
   <div class="form-header">
     <div class="logo-circle">
       <a href="https://shahin.bdwix.com/" target="_blank" style="display: block; width: 100%; height: 100%;">
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh2LknzHx1jledPoj-GyooihJxOmjZBVopUxSqN6CUexD2AlO-tMjdTWR9bROPkwqxQaTjCFX05GnCLJVmTslqUTp1UlTR3Eyzde5OeCDN6NukqasDODS-hCB-HP2t-sC-YzQZXICx9TfvNfPkURfXxg0ZkVDehPz4QqNuQWIZam8RgOeIPSUx0xqHbbPnl/s1600/Shahin-logo.png" alt="Shafiqul Alam Shahin">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh2LknzHx1jledPoj-GyooihJxOmjZBVopUxSqN6CUexD2AlO-tMjdTWR9bROPkwqxQaTjCFX05GnCLJVmTslqUTp1UlTR3Eyzde5OeCDN6NukclassNameasDODS-hCB-HP2t-sC-YzQZXICx9TfvNfPkURfXxg0ZkVDehPz4QqNuQWIZam8RgOeIPSUx0xqHbbPnl/s1600/Shahin-logo.png" alt="Shafiqul Alam Shahin">
       </a>
     </div>
     <a href="https://shahin.bdwix.com/" target="_blank" style="text-decoration: none;">
@@ -11,7 +13,6 @@
   </div>
 
   <form action="https://formsubmit.co/shahinpurbadhala@gmail.com" method="POST" enctype="multipart/form-data" class="custom-form">
-    
     <input type="hidden" name="_captcha" value="false">
     <input type="hidden" name="_template" value="table">
     <input type="hidden" name="_next" value="https://shahin.bdwix.com/">
@@ -29,7 +30,7 @@
     <div class="input-group">
       <label>ফাইল আপলোড (ঐচ্ছিক)</label>
       <input type="file" name="attachments" accept="image/*, audio/*, .pdf, .doc, .docx" multiple>
-      <small class="help-text" style="color: #666; font-size: 11px;">সর্বোচ্চ ৫ মেগাবাইটের ফাইল পাঠানো যাবে।</small>
+      <small class="help-text" style="color: #666; font-size: 11px; display: block; margin-top: 5px;">সর্বোচ্চ ৫ মেগাবাইটের ফাইল পাঠানো যাবে।</small>
     </div>
 
     <div class="input-group">
@@ -50,16 +51,60 @@
 
 <style>
   :root { --bg-dark: #0f172a; --gold: #d4af37; --white: #ffffff; --whatsapp: #25d366; }
-  .contact-container { max-width: 450px; margin: 30px auto; background: var(--white); border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.15); font-family: 'Segoe UI', Tahoma, sans-serif; overflow: hidden; border: 1px solid #ddd; }
-  .form-header { background-color: var(--bg-dark); padding: 35px 20px; text-align: center; border-bottom: 4px solid var(--gold); }
-  .logo-circle { width: 110px; height: 110px; background: #fff; border: 3px solid var(--gold); border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  
+  /* মোবাইল ফ্রেন্ডলি করার মূল পরিবর্তন এখানে */
+  .contact-container { 
+    width: 95%; /* মোবাইলে দুই পাশে সামান্য জায়গা রাখবে */
+    max-width: 450px; 
+    margin: 20px auto; 
+    background: var(--white); 
+    border-radius: 20px; 
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15); 
+    font-family: 'Segoe UI', Tahoma, sans-serif; 
+    overflow: hidden; 
+    border: 1px solid #ddd; 
+  }
+
+  .form-header { background-color: var(--bg-dark); padding: 25px 15px; text-align: center; border-bottom: 4px solid var(--gold); }
+  .logo-circle { width: 90px; height: 90px; background: #fff; border: 3px solid var(--gold); border-radius: 50%; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
   .logo-circle img { width: 100%; height: 100%; object-fit: cover; }
-  .animated-text { font-size: 26px; font-weight: 800; background: linear-gradient(90deg, #fff 0%, #d4af37 50%, #fff 100%); background-size: 200% auto; color: #fff; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: goldShine 3s linear infinite; }
+  
+  .animated-text { 
+    font-size: 22px; 
+    font-weight: 800; 
+    background: linear-gradient(90deg, #fff 0%, #d4af37 50%, #fff 100%); 
+    background-size: 200% auto; 
+    color: #fff; 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+    animation: goldShine 3s linear infinite; 
+    margin: 10px 0 0 0;
+  }
+
   @keyframes goldShine { to { background-position: 200% center; } }
-  .custom-form { padding: 30px; }
-  .input-group { margin-bottom: 20px; }
-  .input-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #333; }
-  .input-group input, .input-group textarea { width: 100%; padding: 12px; border: 1.5px solid #eee; border-radius: 10px; font-size: 14px; box-sizing: border-box; }
-  .submit-btn { width: 100%; padding: 15px; background: var(--bg-dark); color: var(--gold); border: 2px solid var(--gold); border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 16px; margin-bottom: 15px; }
-  .whatsapp-btn { display: flex; align-items: center; justify-content: center; width: 100%; padding: 15px; background: var(--whatsapp); color: white; text-decoration: none; border-radius: 10px; font-weight: bold; box-sizing: border-box; }
+  
+  .custom-form { padding: 20px; }
+  .input-group { margin-bottom: 15px; }
+  .input-group label { display: block; margin-bottom: 6px; font-weight: 600; color: #333; font-size: 14px; }
+  
+  /* ইনপুট ফিল্ড মোবাইলে বড় দেখানোর জন্য */
+  .input-group input, .input-group textarea { 
+    width: 100%; 
+    padding: 12px; 
+    border: 1.5px solid #eee; 
+    border-radius: 10px; 
+    font-size: 16px; /* মোবাইলে ১৬ পিক্সেল দিলে অটো জুম হয় না */
+    box-sizing: border-box; 
+  }
+
+  .submit-btn { width: 100%; padding: 14px; background: var(--bg-dark); color: var(--gold); border: 2px solid var(--gold); border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 16px; margin-bottom: 12px; transition: 0.3s; }
+  .whatsapp-btn { display: flex; align-items: center; justify-content: center; width: 100%; padding: 14px; background: var(--whatsapp); color: white; text-decoration: none; border-radius: 10px; font-weight: bold; font-size: 16px; box-sizing: border-box; }
+
+  /* ছোট মোবাইলের জন্য এক্সট্রা সেটিংস */
+  @media (max-width: 480px) {
+    .form-header { padding: 20px 10px; }
+    .logo-circle { width: 80px; height: 80px; }
+    .animated-text { font-size: 20px; }
+    .custom-form { padding: 15px; }
+  }
 </style>
