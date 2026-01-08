@@ -2,57 +2,72 @@
 <html lang="bn">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Contact Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Form - Shafiqul Alam Shahin</title>
   <style>
-    :root { --bg-dark: #0f172a; --gold: #d4af37; --white: #ffffff; --whatsapp: #25d366; }
-    
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { 
+      --bg-dark: #0f172a; 
+      --gold: #d4af37; 
+      --white: #ffffff; 
+      --whatsapp: #25d366; 
+    }
+
+    * { box-sizing: border-box; }
 
     body { 
+      margin: 0; 
+      padding: 15px; 
       background-color: #f1f5f9; 
       display: flex; 
       justify-content: center; 
       align-items: center;
-      height: 100vh; /* পুরো স্ক্রিন দখল করবে */
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      overflow: hidden; /* স্ক্রল বন্ধ করার জন্য */
+      min-height: 100vh;
     }
 
     .contact-container { 
-      width: 95%; 
-      max-width: 400px; 
+      width: 100%; 
+      max-width: 450px; 
       background: var(--white); 
-      border-radius: 15px; 
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
-      border: 1px solid #ddd;
-      display: flex;
-      flex-direction: column;
+      border-radius: 20px; 
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15); 
+      font-family: 'Segoe UI', Tahoma, sans-serif; 
+      overflow: hidden; 
+      border: 1px solid #ddd; 
     }
 
     .form-header { 
       background-color: var(--bg-dark); 
-      padding: 15px 10px; 
+      padding: 30px 20px; 
       text-align: center; 
-      border-bottom: 3px solid var(--gold); 
+      border-bottom: 4px solid var(--gold); 
     }
 
     .logo-circle { 
-      width: 60px; /* লোগো ছোট করা হয়েছে */
-      height: 60px; 
+      width: 100px; 
+      height: 100px; 
       background: #fff; 
-      border: 2px solid var(--gold); 
+      border: 3px solid var(--gold); 
       border-radius: 50%; 
-      margin: 0 auto 5px; 
-      display: flex; align-items: center; justify-content: center; 
+      margin: 0 auto 10px; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
       overflow: hidden; 
     }
+
     .logo-circle img { width: 100%; height: 100%; object-fit: cover; }
 
-    .user-name { color: #fff; font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+    /* আপনার নাম স্টাইল */
+    .user-name {
+      color: var(--white);
+      font-size: 18px;
+      font-weight: 600;
+      margin: 5px 0 10px;
+      letter-spacing: 0.5px;
+    }
 
     .animated-text { 
-      font-size: 18px; 
+      font-size: 24px; 
       font-weight: 800; 
       background: linear-gradient(90deg, #fff 0%, #d4af37 50%, #fff 100%); 
       background-size: 200% auto; 
@@ -60,54 +75,82 @@
       -webkit-background-clip: text; 
       -webkit-text-fill-color: transparent; 
       animation: goldShine 3s linear infinite; 
+      margin-top: 5px;
     }
 
     @keyframes goldShine { to { background-position: 200% center; } }
 
-    .custom-form { padding: 15px; }
+    .custom-form { padding: 25px; }
 
-    .input-group { margin-bottom: 10px; }
-    .input-group label { display: block; margin-bottom: 4px; font-weight: 600; color: #333; font-size: 12px; }
+    .input-group { margin-bottom: 18px; text-align: left; }
 
-    .input-group input, .input-group textarea { 
-      width: 100%; 
-      padding: 8px 12px; 
-      border: 1.5px solid #eee; 
-      border-radius: 8px; 
-      font-size: 14px; 
-      outline: none;
+    .input-group label { 
+      display: block; 
+      margin-bottom: 8px; 
+      font-weight: 600; 
+      color: #333; 
+      font-size: 14px;
     }
 
-    .help-text { font-size: 10px; color: #777; margin-top: 2px; }
+    .input-group input, 
+    .input-group textarea { 
+      width: 100%; 
+      padding: 12px; 
+      border: 1.5px solid #eee; 
+      border-radius: 10px; 
+      font-size: 16px; /* মোবাইলে টাইপিং সুবিধার জন্য */
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .input-group input:focus, 
+    .input-group textarea:focus {
+      border-color: var(--gold);
+    }
+
+    .help-text { display: block; margin-top: 5px; color: #666; font-size: 11px; }
 
     .submit-btn { 
       width: 100%; 
-      padding: 10px; 
+      padding: 14px; 
       background: var(--bg-dark); 
       color: var(--gold); 
       border: 2px solid var(--gold); 
-      border-radius: 8px; 
+      border-radius: 10px; 
       cursor: pointer; 
       font-weight: bold; 
-      font-size: 14px; 
-      margin-bottom: 8px; 
+      font-size: 16px; 
+      margin-bottom: 12px; 
+      transition: 0.3s;
+    }
+
+    .submit-btn:hover {
+      background: var(--gold);
+      color: var(--bg-dark);
     }
 
     .whatsapp-btn { 
-      display: flex; align-items: center; justify-content: center; 
-      width: 100%; padding: 10px; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      width: 100%; 
+      padding: 14px; 
       background: var(--whatsapp); 
-      color: white; text-decoration: none; 
-      border-radius: 8px; font-weight: bold; font-size: 14px; 
+      color: white; 
+      text-decoration: none; 
+      border-radius: 10px; 
+      font-weight: bold; 
+      font-size: 16px; 
     }
 
-    /* স্ক্রিন সাইজ অনুযায়ী ছোট করা */
-    @media (max-height: 600px) {
-      .logo-circle { width: 45px; height: 45px; }
-      .animated-text { font-size: 16px; }
-      .custom-form { padding: 10px; }
-      .input-group { margin-bottom: 5px; }
-      textarea { rows: 2 !important; height: 60px; }
+    /* মোবাইল ডিভাইসের জন্য বাড়তি সতর্কতা */
+    @media (max-width: 480px) {
+      body { padding: 10px; }
+      .form-header { padding: 20px 15px; }
+      .logo-circle { width: 85px; height: 85px; }
+      .user-name { font-size: 16px; }
+      .animated-text { font-size: 20px; }
+      .custom-form { padding: 20px 15px; }
     }
   </style>
 </head>
@@ -116,41 +159,50 @@
 <div class="contact-container">
   <div class="form-header">
     <div class="logo-circle">
-      <a href="https://shahin.bdwix.com/" target="_blank">
+      <a href="https://shahin.bdwix.com/" target="_blank" style="display: block; width: 100%; height: 100%;">
         <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh2LknzHx1jledPoj-GyooihJxOmjZBVopUxSqN6CUexD2AlO-tMjdTWR9bROPkwqxQaTjCFX05GnCLJVmTslqUTp1UlTR3Eyzde5OeCDN6NukqasDODS-hCB-HP2t-sC-YzQZXICx9TfvNfPkURfXxg0ZkVDehPz4QqNuQWIZam8RgOeIPSUx0xqHbbPnl/s1600/Shahin-logo.png" alt="Shafiqul Alam Shahin">
       </a>
     </div>
+    
     <div class="user-name">Shafiqul Alam Shahin</div>
-    <h3 class="animated-text">যোগাযোগ করুন</h3>
+
+    <a href="https://shahin.bdwix.com/" target="_blank" style="text-decoration: none;">
+      <h3 class="animated-text">যোগাযোগ করুন</h3>
+    </a>
   </div>
 
   <form action="https://formsubmit.co/shahinpurbadhala@gmail.com" method="POST" enctype="multipart/form-data" class="custom-form">
     <input type="hidden" name="_captcha" value="false">
-    
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_next" value="https://shahin.bdwix.com/">
+
     <div class="input-group">
       <label>আপনার নাম</label>
-      <input type="text" name="name" placeholder="নাম লিখুন" required>
+      <input type="text" name="name" placeholder="আপনার নাম লিখুন" required>
     </div>
 
     <div class="input-group">
       <label>ইমেইল এড্রেস</label>
-      <input type="email" name="email" placeholder="ইমেইল লিখুন" required>
+      <input type="email" name="email" placeholder="আপনার ইমেইল" required>
     </div>
 
     <div class="input-group">
-      <label>ফাইল (ঐচ্ছিক)</label>
-      <input type="file" name="attachments" accept="image/*,.pdf">
-      <small class="help-text">সর্বোচ্চ ৫ মেগাবাইট</small>
+      <label>ফাইল আপলোড (ঐচ্ছিক)</label>
+      <input type="file" name="attachments" accept="image/*, audio/*, .pdf, .doc, .docx" multiple>
+      <small class="help-text">সর্বোচ্চ ৫ মেগাবাইটের ফাইল পাঠানো যাবে।</small>
     </div>
 
     <div class="input-group">
       <label>আপনার বার্তা</label>
-      <textarea name="message" rows="3" placeholder="বার্তা লিখুন..." required></textarea>
+      <textarea name="message" rows="4" placeholder="এখানে আপনার বার্তা লিখুন..." required></textarea>
     </div>
 
     <button type="submit" class="submit-btn">বার্তা পাঠান</button>
     
     <a href="https://wa.me/8801711796839" target="_blank" class="whatsapp-btn">
+      <svg style="width:20px; height:20px; vertical-align:middle; margin-right:8px;" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42 1.56 1.56 2.41 3.63 2.41 5.83 0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.17-3.12.82.83-3.04-.2-.31a8.132 8.132 0 0 1-1.24-4.38c0-4.54 3.7-8.23 8.23-8.23m-3.8 4.63c-.21 0-.35.1-.46.23-.11.12-.42.41-.42 1s.43 1.17.49 1.25c.06.08.83 1.28 2.02 1.79.29.12.51.19.68.25.29.09.55.08.76.05.23-.04.72-.3 0-.58.11-.27.11-.5.08-.58-.04-.08-.12-.12-.25-.19-.13-.07-.75-.37-.87-.41-.12-.04-.21-.06-.3.08-.09.14-.35.43-.43.53-.08.09-.16.1-.29.04-.13-.07-.55-.21-1.05-.66-.39-.34-.65-.77-.73-.9-.08-.13-.01-.2.06-.27.06-.06.13-.15.19-.23.07-.08.09-.14.13-.23.04-.09.02-.17-.01-.23-.03-.07-.3-.72-.41-.99-.11-.26-.22-.22-.3-.22z"/>
+      </svg>
       WhatsApp এ কথা বলুন
     </a>
   </form>
