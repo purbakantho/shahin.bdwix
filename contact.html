@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Form - Shafiqul Alam Shahin</title>
   <style>
     :root { 
       --bg-dark: #0f172a; 
@@ -10,43 +12,62 @@
       --whatsapp: #25d366; 
     }
 
-    * { box-sizing: border-box; } /* সব এলিমেন্টের সাইজ ঠিক রাখে */
+    * { box-sizing: border-box; }
 
-    body { margin: 0; padding: 10px; background-color: #f4f4f4; }
+    body { 
+      margin: 0; 
+      padding: 15px; 
+      background-color: #f1f5f9; 
+      display: flex; 
+      justify-content: center; 
+      align-items: center;
+      min-height: 100vh;
+    }
 
     .contact-container { 
       width: 100%; 
       max-width: 450px; 
-      margin: 10px auto; 
       background: var(--white); 
       border-radius: 20px; 
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15); 
+      font-family: 'Segoe UI', Tahoma, sans-serif; 
       overflow: hidden; 
       border: 1px solid #ddd; 
     }
 
     .form-header { 
       background-color: var(--bg-dark); 
-      padding: 25px 15px; 
+      padding: 30px 20px; 
       text-align: center; 
       border-bottom: 4px solid var(--gold); 
     }
 
     .logo-circle { 
-      width: 90px; height: 90px; 
+      width: 100px; 
+      height: 100px; 
       background: #fff; 
       border: 3px solid var(--gold); 
       border-radius: 50%; 
       margin: 0 auto 10px; 
-      display: flex; align-items: center; justify-content: center; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
       overflow: hidden; 
     }
 
     .logo-circle img { width: 100%; height: 100%; object-fit: cover; }
 
+    /* আপনার নাম স্টাইল */
+    .user-name {
+      color: var(--white);
+      font-size: 18px;
+      font-weight: 600;
+      margin: 5px 0 10px;
+      letter-spacing: 0.5px;
+    }
+
     .animated-text { 
-      font-size: 22px; 
+      font-size: 24px; 
       font-weight: 800; 
       background: linear-gradient(90deg, #fff 0%, #d4af37 50%, #fff 100%); 
       background-size: 200% auto; 
@@ -54,32 +75,37 @@
       -webkit-background-clip: text; 
       -webkit-text-fill-color: transparent; 
       animation: goldShine 3s linear infinite; 
-      margin: 5px 0;
+      margin-top: 5px;
     }
 
     @keyframes goldShine { to { background-position: 200% center; } }
 
-    .custom-form { padding: 20px; }
+    .custom-form { padding: 25px; }
 
-    .input-group { margin-bottom: 15px; text-align: left; }
+    .input-group { margin-bottom: 18px; text-align: left; }
 
     .input-group label { 
       display: block; 
-      margin-bottom: 6px; 
+      margin-bottom: 8px; 
       font-weight: 600; 
       color: #333; 
       font-size: 14px;
     }
 
-    /* মোবাইল টাইপিং ইজি করার জন্য ১৬ পিক্সেল ফন্ট ব্যবহার করা হয়েছে */
     .input-group input, 
     .input-group textarea { 
       width: 100%; 
       padding: 12px; 
       border: 1.5px solid #eee; 
       border-radius: 10px; 
-      font-size: 16px; 
+      font-size: 16px; /* মোবাইলে টাইপিং সুবিধার জন্য */
       outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .input-group input:focus, 
+    .input-group textarea:focus {
+      border-color: var(--gold);
     }
 
     .help-text { display: block; margin-top: 5px; color: #666; font-size: 11px; }
@@ -95,6 +121,12 @@
       font-weight: bold; 
       font-size: 16px; 
       margin-bottom: 12px; 
+      transition: 0.3s;
+    }
+
+    .submit-btn:hover {
+      background: var(--gold);
+      color: var(--bg-dark);
     }
 
     .whatsapp-btn { 
@@ -111,12 +143,14 @@
       font-size: 16px; 
     }
 
-    /* ছোট মোবাইলের জন্য মিডিয়া কোয়েরি */
-    @media (max-width: 400px) {
-      .form-header { padding: 20px 10px; }
-      .logo-circle { width: 75px; height: 75px; }
-      .animated-text { font-size: 18px; }
-      .custom-form { padding: 15px; }
+    /* মোবাইল ডিভাইসের জন্য বাড়তি সতর্কতা */
+    @media (max-width: 480px) {
+      body { padding: 10px; }
+      .form-header { padding: 20px 15px; }
+      .logo-circle { width: 85px; height: 85px; }
+      .user-name { font-size: 16px; }
+      .animated-text { font-size: 20px; }
+      .custom-form { padding: 20px 15px; }
     }
   </style>
 </head>
@@ -129,6 +163,9 @@
         <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh2LknzHx1jledPoj-GyooihJxOmjZBVopUxSqN6CUexD2AlO-tMjdTWR9bROPkwqxQaTjCFX05GnCLJVmTslqUTp1UlTR3Eyzde5OeCDN6NukqasDODS-hCB-HP2t-sC-YzQZXICx9TfvNfPkURfXxg0ZkVDehPz4QqNuQWIZam8RgOeIPSUx0xqHbbPnl/s1600/Shahin-logo.png" alt="Shafiqul Alam Shahin">
       </a>
     </div>
+    
+    <div class="user-name">Shafiqul Alam Shahin</div>
+
     <a href="https://shahin.bdwix.com/" target="_blank" style="text-decoration: none;">
       <h3 class="animated-text">যোগাযোগ করুন</h3>
     </a>
